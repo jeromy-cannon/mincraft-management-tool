@@ -11,5 +11,6 @@ log.info("current log level: ", log.level());
 // $ node index.js | .\node_modules\.bin\bunyan
 
 app.listen(3000, 'localhost', function () {
+    log.info(process.env.TEST);
     log.info(new Date() + ': Server has started! http://localhost:3000');
 });
