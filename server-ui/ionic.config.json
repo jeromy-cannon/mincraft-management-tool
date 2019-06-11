@@ -1,0 +1,7 @@
+{
+  "name": "server-ui",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
