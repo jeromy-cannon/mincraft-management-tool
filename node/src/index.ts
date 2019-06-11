@@ -24,8 +24,7 @@ log.info("current log level: ", log.level());
 app.get('/api/v1/todos', (req, res) => {
     res.status(200).send({
         success: 'true',
-        message: 'todos retrieved successfully',
-        todos: db
+        message: 'todos retrieved successfully'
     })
 });
 
