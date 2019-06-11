@@ -1,7 +1,0 @@
-{
-  "appId": "com.smartypantsman",
-  "appName": "minecraft-tool",
-  "bundledWebRuntime": false,
-  "npmClient": "npm",
-  "webDir": "www"
-}
