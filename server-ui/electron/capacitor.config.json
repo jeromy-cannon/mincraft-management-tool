@@ -1,0 +1,7 @@
+{
+  "appId": "com.smartypantsman.serverui",
+  "appName": "severui",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}
