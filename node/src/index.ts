@@ -26,21 +26,26 @@ function init() {
 
 init();
 
-app.get('/rest/mc/backup', (req, res) => {
+const backupUrl = '/rest/mc/backup';
+app.get(backupUrl, (req, res) => {
     res.status(200).send({
         success: 'true',
         message: 'minecraft backup complete'
     })
 });
 
-app.get('/rest/mc/restore', (req, res) => {
+const restoreUrl = '/rest/mc/restore';
+app.get(restoreUrl, (req, res) => {
     res.status(200).send({
         success: 'true',
         message: 'minecraft restored to last backup'
     })
 });
 
+const baseUrl = 'http://localhost' + ':' + process.env.PORT;
 app.listen(3000, 'localhost', function () {
     log.info(process.env.GREETING);
-    log.info(new Date() + ': Server has started! http://localhost:3000');
+    log.info(new Date() + ': Server has started! ' + baseUrl);
+    log.info('backup URL: ' + baseUrl + backupUrl);
+    log.info('restore URL: ' + baseUrl + restoreUrl);
 });
