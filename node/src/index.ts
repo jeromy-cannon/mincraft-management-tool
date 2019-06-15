@@ -19,7 +19,7 @@ function init() {
     app.use(bodyParser.urlencoded({
         extended: true
     }));
-    app.use(cors);
+    app.use(cors());
 
     log.info("current log level: ", log.level());
     // $ node index.js | .\node_modules\.bin\bunyan
