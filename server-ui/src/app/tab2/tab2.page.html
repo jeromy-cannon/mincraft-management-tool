@@ -10,13 +10,13 @@
   <ion-grid>
     <ion-row>
       <ion-col size="12" size-md>
-        <ion-button color="primary">
+        <ion-button backup-button color="primary" (click)="onBackup()">
           <ion-ripple-effect></ion-ripple-effect>
           Backup Server
         </ion-button>
       </ion-col>
       <ion-col size="12" size-md>
-        <ion-button color="danger">
+        <ion-button restore-button color="danger" (click)="onRestore()">
           <ion-ripple-effect></ion-ripple-effect>
           Restore From Last Backup
         </ion-button>

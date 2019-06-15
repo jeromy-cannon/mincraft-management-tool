@@ -1,5 +1,48 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["tab2-tab2-module"],{
 
+/***/ "./src/app/app.service.ts":
+/*!********************************!*\
+  !*** ./src/app/app.service.ts ***!
+  \********************************/
+/*! exports provided: AppService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppService", function() { return AppService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
+
+
+var AppService = /** @class */ (function () {
+    function AppService(http) {
+        this.http = http;
+    }
+    AppService.prototype.runBackup = function () {
+        this.http.get('http://localhost:3000/rest/mc/backup').subscribe(function (resData) {
+            console.log(resData);
+        });
+    };
+    AppService.prototype.runRestore = function () {
+        this.http.get('http://localhost:3000/rest/mc/restore').subscribe(function (resData) {
+            console.log(resData);
+        });
+    };
+    AppService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], AppService);
+    return AppService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/tab2/tab2.module.ts":
 /*!*************************************!*\
   !*** ./src/app/tab2/tab2.module.ts ***!
@@ -52,7 +95,7 @@ var Tab2PageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>\n      Minecraft Server UI\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid>\n    <ion-row>\n      <ion-col size=\"12\" size-md>\n        <ion-button color=\"primary\">\n          <ion-ripple-effect></ion-ripple-effect>\n          Backup Server\n        </ion-button>\n      </ion-col>\n      <ion-col size=\"12\" size-md>\n        <ion-button color=\"danger\">\n          <ion-ripple-effect></ion-ripple-effect>\n          Restore From Last Backup\n        </ion-button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>"
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>\n      Minecraft Server UI\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid>\n    <ion-row>\n      <ion-col size=\"12\" size-md>\n        <ion-button backup-button color=\"primary\" (click)=\"onBackup()\">\n          <ion-ripple-effect></ion-ripple-effect>\n          Backup Server\n        </ion-button>\n      </ion-col>\n      <ion-col size=\"12\" size-md>\n        <ion-button restore-button color=\"danger\" (click)=\"onRestore()\">\n          <ion-ripple-effect></ion-ripple-effect>\n          Restore From Last Backup\n        </ion-button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>"
 
 /***/ }),
 
@@ -79,18 +122,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Tab2Page", function() { return Tab2Page; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _app_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! .././app.service */ "./src/app/app.service.ts");
+
 
 
 var Tab2Page = /** @class */ (function () {
-    function Tab2Page() {
+    function Tab2Page(theAppService) {
+        this.appService = theAppService;
     }
+    Tab2Page.prototype.onBackup = function () {
+        console.log('restoring...');
+        this.appService.runBackup();
+        console.log('...restored');
+    };
+    Tab2Page.prototype.onRestore = function () {
+        console.log('backing up...');
+        this.appService.runRestore();
+        console.log('...backed up');
+    };
     Tab2Page = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-tab2',
             template: __webpack_require__(/*! ./tab2.page.html */ "./src/app/tab2/tab2.page.html"),
             styles: [__webpack_require__(/*! ./tab2.page.scss */ "./src/app/tab2/tab2.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_app_service__WEBPACK_IMPORTED_MODULE_2__["AppService"]])
     ], Tab2Page);
     return Tab2Page;
 }());

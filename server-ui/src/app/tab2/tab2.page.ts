@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppService } from '.././app.service';
 
 @Component({
   selector: 'app-tab2',
@@ -6,7 +7,21 @@ import { Component } from '@angular/core';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
+  appService: AppService;
+  constructor(theAppService: AppService) {
+    this.appService = theAppService;
+  }
 
-  constructor() {}
+  onBackup() {
+    console.log('restoring...');
+    this.appService.runBackup();
+    console.log('...restored');
+  }
+
+  onRestore() {
+    console.log('backing up...');
+    this.appService.runRestore();
+    console.log('...backed up');
+  }
 
 }
