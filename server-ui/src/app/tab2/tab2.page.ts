@@ -13,15 +13,15 @@ export class Tab2Page {
   }
 
   onBackup() {
-    console.log('restoring...');
+    console.log('backing up...');
     this.appService.runBackup();
-    console.log('...restored');
+    console.log('...backed up');
   }
 
   onRestore() {
-    console.log('backing up...');
+    console.log('restoring...');
     this.appService.runRestore();
-    console.log('...backed up');
+    console.log('...restored');
   }
 
 }

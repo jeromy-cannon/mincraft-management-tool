@@ -21,14 +21,18 @@ var AppService = /** @class */ (function () {
         this.http = http;
     }
     AppService.prototype.runBackup = function () {
+        console.log('calling backup url...');
         this.http.get('http://localhost:3000/rest/mc/backup').subscribe(function (resData) {
             console.log(resData);
         });
+        console.log('...called backup url');
     };
     AppService.prototype.runRestore = function () {
+        console.log('calling restore url...');
         this.http.get('http://localhost:3000/rest/mc/restore').subscribe(function (resData) {
             console.log(resData);
         });
+        console.log('...called restore url');
     };
     AppService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
