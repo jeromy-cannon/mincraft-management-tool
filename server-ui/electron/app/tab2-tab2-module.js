@@ -99,7 +99,7 @@ var Tab2PageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>\n      Minecraft Server UI\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid>\n    <ion-row>\n      <ion-col size=\"12\" size-md>\n        <ion-button backup-button color=\"primary\" (click)=\"onBackup()\">\n          <ion-ripple-effect></ion-ripple-effect>\n          Backup Server\n        </ion-button>\n      </ion-col>\n      <ion-col size=\"12\" size-md>\n        <ion-button restore-button color=\"danger\" (click)=\"onRestore()\">\n          <ion-ripple-effect></ion-ripple-effect>\n          Restore From Last Backup\n        </ion-button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>"
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>\n      Minecraft Server UI\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid>\n    <ion-row>\n      <ion-col size=\"12\" size-lg>\n        <ion-item>\n          <ion-label>\n            <ion-icon name=\"cloud-outline\" item-left></ion-icon>\n          </ion-label>\n          <ion-input #serverAddress type=\"text\" value=\"\" placeholder=\"server address\">\n          </ion-input>\n        </ion-item>\n      </ion-col>\n      <ion-col size=\"12\" size-md>\n        <ion-button save-server-button color=\"primary\" (click)=\"onSave(serverAddress.value)\">\n          <ion-ripple-effect></ion-ripple-effect>\n          Save\n        </ion-button>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col size=\"12\" size-md>\n        <ion-button backup-button color=\"primary\" (click)=\"onBackup()\">\n          <ion-ripple-effect></ion-ripple-effect>\n          Backup Server\n        </ion-button>\n      </ion-col>\n      <ion-col size=\"12\" size-md>\n        <ion-button restore-button color=\"danger\" (click)=\"onRestore()\">\n          <ion-ripple-effect></ion-ripple-effect>\n          Restore From Last Backup\n        </ion-button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>"
 
 /***/ }),
 
@@ -110,7 +110,7 @@ module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>\n      Minecraf
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3RhYjIvdGFiMi5wYWdlLnNjc3MifQ== */"
+module.exports = "ion-item:first-child {\n  border-top-left-radius: 5px;\n  border-top-right-radius: 5px; }\n\nion-item:last-child {\n  border-bottom-left-radius: 5px;\n  border-bottom-right-radius: 5px; }\n\nion-item.item {\n  background-color: rgba(255, 255, 255, 0.4);\n  margin-bottom: 1px; }\n\nion-item.item .label {\n    width: 10%;\n    color: rgba(0, 0, 0, 0.6);\n    font-size: 1.2em; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdGFiMi9DOlxcVXNlcnNcXGplcm9tXFxzb3VyY2VcXE1pbmVjcmFmdFxcc2VydmVyLXVpL3NyY1xcYXBwXFx0YWIyXFx0YWIyLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLDJCQUEyQjtFQUMzQiw0QkFBNEIsRUFBQTs7QUFHaEM7RUFDSSw4QkFBOEI7RUFDOUIsK0JBQStCLEVBQUE7O0FBR25DO0VBQ0ksMENBQTBDO0VBQzFDLGtCQUFrQixFQUFBOztBQUZ0QjtJQUtRLFVBQVU7SUFDVix5QkFBeUI7SUFDekIsZ0JBQWdCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC90YWIyL3RhYjIucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWl0ZW06Zmlyc3QtY2hpbGQge1xuICAgIGJvcmRlci10b3AtbGVmdC1yYWRpdXM6IDVweDtcbiAgICBib3JkZXItdG9wLXJpZ2h0LXJhZGl1czogNXB4O1xufVxuXG5pb24taXRlbTpsYXN0LWNoaWxkIHtcbiAgICBib3JkZXItYm90dG9tLWxlZnQtcmFkaXVzOiA1cHg7XG4gICAgYm9yZGVyLWJvdHRvbS1yaWdodC1yYWRpdXM6IDVweDtcbn1cblxuaW9uLWl0ZW0uaXRlbSB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjQpO1xuICAgIG1hcmdpbi1ib3R0b206IDFweDtcblxuICAgIC5sYWJlbCB7XG4gICAgICAgIHdpZHRoOiAxMCU7XG4gICAgICAgIGNvbG9yOiByZ2JhKDAsIDAsIDAsIDAuNik7XG4gICAgICAgIGZvbnQtc2l6ZTogMS4yZW07XG4gICAgfVxufSJdfQ== */"
 
 /***/ }),
 
@@ -143,6 +143,11 @@ var Tab2Page = /** @class */ (function () {
         console.log('restoring...');
         this.appService.runRestore();
         console.log('...restored');
+    };
+    Tab2Page.prototype.onSave = function (serverAddress) {
+        console.log("saving...");
+        console.log("saved: " + serverAddress);
+        console.log("...saved");
     };
     Tab2Page = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

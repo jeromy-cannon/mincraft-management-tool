@@ -24,4 +24,9 @@ export class Tab2Page {
     console.log('...restored');
   }
 
+  onSave(serverAddress: string) {
+    console.log("saving...");
+    console.log("saved: " + serverAddress);
+    console.log("...saved");
+  }
 }
