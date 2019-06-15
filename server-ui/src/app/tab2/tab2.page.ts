@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AppService } from '.././app.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-tab2',
@@ -7,9 +8,7 @@ import { AppService } from '.././app.service';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
-  appService: AppService;
-  constructor(theAppService: AppService) {
-    this.appService = theAppService;
+  constructor(private appService: AppService, private storage: Storage) {
   }
 
   onBackup() {
@@ -26,6 +25,7 @@ export class Tab2Page {
 
   onSave(serverAddress: string) {
     console.log("saving...");
+    this.storage.set('serverAddress', serverAddress)
     console.log("saved: " + serverAddress);
     console.log("...saved");
   }
