@@ -99,7 +99,7 @@ var Tab2PageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>\n      Minecraft Server UI\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid>\n    <ion-row>\n      <ion-col size=\"12\" size-lg>\n        <ion-item>\n          <ion-label>\n            <ion-icon name=\"cloud-outline\" item-left></ion-icon>\n          </ion-label>\n          <ion-input #serverAddress type=\"text\" value=\"\" placeholder=\"server address\">\n          </ion-input>\n        </ion-item>\n      </ion-col>\n      <ion-col size=\"12\" size-md>\n        <ion-button save-server-button color=\"primary\" (click)=\"onSave(serverAddress.value)\">\n          <ion-ripple-effect></ion-ripple-effect>\n          Save\n        </ion-button>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col size=\"12\" size-md>\n        <ion-button backup-button color=\"primary\" (click)=\"onBackup()\">\n          <ion-ripple-effect></ion-ripple-effect>\n          Backup Server\n        </ion-button>\n      </ion-col>\n      <ion-col size=\"12\" size-md>\n        <ion-button restore-button color=\"danger\" (click)=\"onRestore()\">\n          <ion-ripple-effect></ion-ripple-effect>\n          Restore From Last Backup\n        </ion-button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>"
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>\n      Minecraft Server UI\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid>\n    <ion-row>\n      <ion-col size=\"12\" size-lg>\n        <ion-item>\n          <ion-label>\n            <ion-icon name=\"cloud-outline\" item-left></ion-icon>\n          </ion-label>\n          <ion-input #serverAddress type=\"text\" [(ngModel)]=\"serverAddress\" placeholder=\"server address\">\n          </ion-input>\n        </ion-item>\n      </ion-col>\n      <ion-col size=\"12\" size-md>\n        <ion-button save-server-button color=\"primary\" (click)=\"onSave(serverAddress.value)\">\n          <ion-ripple-effect></ion-ripple-effect>\n          Save\n        </ion-button>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col size=\"12\" size-md>\n        <ion-button backup-button color=\"primary\" (click)=\"onBackup()\">\n          <ion-ripple-effect></ion-ripple-effect>\n          Backup Server\n        </ion-button>\n      </ion-col>\n      <ion-col size=\"12\" size-md>\n        <ion-button restore-button color=\"danger\" (click)=\"onRestore()\">\n          <ion-ripple-effect></ion-ripple-effect>\n          Restore From Last Backup\n        </ion-button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>"
 
 /***/ }),
 
@@ -127,13 +127,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _app_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! .././app.service */ "./src/app/app.service.ts");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
+
 
 
 
 var Tab2Page = /** @class */ (function () {
-    function Tab2Page(theAppService) {
-        this.appService = theAppService;
+    function Tab2Page(appService, storage) {
+        this.appService = appService;
+        this.storage = storage;
     }
+    Tab2Page.prototype.ionViewDidEnter = function () {
+        var _this = this;
+        this.storage.get('serverAddress').then(function (val) {
+            _this.serverAddress = val;
+            console.log('retrieved previous server address: ', _this.serverAddress);
+        });
+    };
     Tab2Page.prototype.onBackup = function () {
         console.log('backing up...');
         this.appService.runBackup();
@@ -146,6 +156,7 @@ var Tab2Page = /** @class */ (function () {
     };
     Tab2Page.prototype.onSave = function (serverAddress) {
         console.log("saving...");
+        this.storage.set('serverAddress', serverAddress);
         console.log("saved: " + serverAddress);
         console.log("...saved");
     };
@@ -155,7 +166,7 @@ var Tab2Page = /** @class */ (function () {
             template: __webpack_require__(/*! ./tab2.page.html */ "./src/app/tab2/tab2.page.html"),
             styles: [__webpack_require__(/*! ./tab2.page.scss */ "./src/app/tab2/tab2.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_app_service__WEBPACK_IMPORTED_MODULE_2__["AppService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_app_service__WEBPACK_IMPORTED_MODULE_2__["AppService"], _ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"]])
     ], Tab2Page);
     return Tab2Page;
 }());

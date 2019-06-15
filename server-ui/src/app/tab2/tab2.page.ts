@@ -8,18 +8,25 @@ import { Storage } from '@ionic/storage';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
-  constructor(private appService: AppService, private storage: Storage) {
+  serverAddress: string = 'localhost';
+  constructor(private appService: AppService, private storage: Storage) { }
+
+  ionViewDidEnter() {
+    this.storage.get('serverAddress').then((val) => {
+      this.serverAddress = val;
+      console.log('retrieved previous server address: ', this.serverAddress);
+    });
   }
 
   onBackup() {
     console.log('backing up...');
-    this.appService.runBackup();
+    this.appService.runBackup(this.serverAddress);
     console.log('...backed up');
   }
 
   onRestore() {
     console.log('restoring...');
-    this.appService.runRestore();
+    this.appService.runRestore(this.serverAddress);
     console.log('...restored');
   }
 

@@ -14,12 +14,12 @@
           <ion-label>
             <ion-icon name="cloud-outline" item-left></ion-icon>
           </ion-label>
-          <ion-input #serverAddress type="text" value="" placeholder="server address">
+          <ion-input #serverAddressText="ngModel" type="text" [(ngModel)]="serverAddress" placeholder="server address">
           </ion-input>
         </ion-item>
       </ion-col>
       <ion-col size="12" size-md>
-        <ion-button save-server-button color="primary" (click)="onSave(serverAddress.value)">
+        <ion-button save-server-button color="primary" (click)="onSave(serverAddressText.value)">
           <ion-ripple-effect></ion-ripple-effect>
           Save
         </ion-button>

@@ -8,16 +8,16 @@ export class AppService {
 
   constructor(private http: HttpClient) { }
 
-  runBackup() {
+  runBackup(serverAddress: string) {
     console.log('calling backup url...');
-    this.http.get<any>('http://localhost:3000/rest/mc/backup').subscribe(resData => {
+    this.http.get<any>('http://' + serverAddress + '/rest/mc/backup').subscribe(resData => {
       console.log(resData);
     });
     console.log('...called backup url');
   }
-  runRestore() {
+  runRestore(serverAddress: string) {
     console.log('calling restore url...');
-    this.http.get<any>('http://localhost:3000/rest/mc/restore').subscribe(resData => {
+    this.http.get<any>('http://' + serverAddress + '/rest/mc/restore').subscribe(resData => {
       console.log(resData);
     });
     console.log('...called restore url');
