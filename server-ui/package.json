@@ -11,7 +11,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "electron-build": "ionic build & npx cap copy & cd electron & npm run electron:start",
-    "pwa-build": "ionic build & npx cap copy & ionic serve"
+    "pwa-build": "ionic build & npx cap copy & ionic serve",
+    "lab-build": "ionic build & npx cap copy & ionic serve --lab"
   },
   "private": true,
   "dependencies": {
