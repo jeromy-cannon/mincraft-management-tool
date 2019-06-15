@@ -135,14 +135,14 @@ var Tab2Page = /** @class */ (function () {
         this.appService = theAppService;
     }
     Tab2Page.prototype.onBackup = function () {
-        console.log('restoring...');
+        console.log('backing up...');
         this.appService.runBackup();
-        console.log('...restored');
+        console.log('...backed up');
     };
     Tab2Page.prototype.onRestore = function () {
-        console.log('backing up...');
+        console.log('restoring...');
         this.appService.runRestore();
-        console.log('...backed up');
+        console.log('...restored');
     };
     Tab2Page = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
