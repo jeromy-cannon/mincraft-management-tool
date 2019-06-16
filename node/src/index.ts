@@ -66,7 +66,7 @@ app.get(restoreUrl, (req, res) => {
 });
 
 const baseUrl = 'http://localhost' + ':' + process.env.PORT;
-app.listen(3000, 'localhost', function () {
+app.listen(process.env.PORT, 'localhost', function () {
     log.info(process.env.GREETING);
     log.info(new Date() + ': Server has started! ' + baseUrl);
     log.info('backup URL: ' + baseUrl + backupUrl);
