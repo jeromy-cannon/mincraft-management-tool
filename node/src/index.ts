@@ -49,9 +49,9 @@ app.get(backupUrl, (req, res) => {
     backup();
     res.status(200).send({
         success: 'true',
-        message: 'minecraft backup complete'
+        message: 'minecraft backup submitted'
     });
-    log.info('...backed up');
+    log.info('...back up submitted');
 });
 
 const restoreUrl = '/rest/mc/restore';
@@ -60,9 +60,9 @@ app.get(restoreUrl, (req, res) => {
     restore();
     res.status(200).send({
         success: 'true',
-        message: 'minecraft restored to last backup'
+        message: 'minecraft restore to last backup submitted'
     });
-    log.info('...restored');
+    log.info('...restore submitted');
 });
 
 const baseUrl = 'http://localhost' + ':' + process.env.PORT;
